@@ -85,7 +85,7 @@ app.post('/register', async (req, res) => {
       req.session.token = token;
   
       // Respond with success message
-      res.send({"message":`The user ${username} has been added`});
+      res.redirect('/index?username=${newUser.username}')
     } catch (error) {
       console.error(error);
       // Handle server errors
@@ -108,7 +108,7 @@ app.post('/login', async (req, res) => {
       req.session.token = token;
   
       // Respond with a success message
-      res.send({"message":`${user.username} has logged in`});
+     res.redirect('/index?username=${user.username}');
     } catch (error) {
       console.error(error);
       // Handle server errors
